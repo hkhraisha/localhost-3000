@@ -1,0 +1,12 @@
+{
+  "name": "done-app",
+  "version": "1.0.0",
+  "description": "Done — home services booking app (pure Node.js, no dependencies)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

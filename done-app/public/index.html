@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Done — home services, on demand</title>
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<div class="device">
+  <div class="statusbar"><span id="clock">9:41</span><span>Done</span></div>
+
+  <!-- AUTH -->
+  <div class="authscreen" id="authscreen">
+    <div class="brandrow">
+      <div class="brandmark"><div class="ring"><svg viewBox="0 0 24 24" fill="none"><path d="M2.5 14.5C6 15.3 9 14.6 11.5 12C14.3 9.1 16.8 6.3 21.5 4.3C18 7 15.2 10 12.8 13.2C11 15.6 8 17 4.8 16.6C3.5 16.4 2.7 15.7 2.5 14.5Z" fill="var(--gold)"/></svg></div></div>
+      <span class="wordmark">DONE</span>
+    </div>
+    <h1 style="font-size:22px;">Whatever you need,<br><span class="accent" style="color:var(--gold);">done.</span></h1>
+    <p style="font-size:13px;margin-top:8px;">Sign in to book vetted professionals for home, beauty, travel and more.</p>
+
+    <div class="authtabs">
+      <div class="authtab active" id="tab-login" onclick="setAuthMode('login')">Log in</div>
+      <div class="authtab" id="tab-signup" onclick="setAuthMode('signup')">Sign up</div>
+    </div>
+
+    <div id="signup-fields" style="display:none;">
+      <div class="field"><label>Full name</label><input id="su-name" placeholder="Yasmin Adel"></div>
+      <div class="field"><label>Phone (optional)</label><input id="su-phone" placeholder="+962 7..."></div>
+    </div>
+    <div class="field"><label>Email</label><input id="auth-email" type="email" placeholder="you@example.com"></div>
+    <div class="field"><label>Password</label><input id="auth-password" type="password" placeholder="••••••••"></div>
+    <div class="formerror" id="auth-error"></div>
+
+    <div class="btn primary" id="auth-submit" onclick="submitAuth()">Log in</div>
+    <div class="authhint" id="auth-hint">New to Done? <a onclick="setAuthMode('signup')">Create an account</a></div>
+  </div>
+
+  <!-- MAIN APP -->
+  <div class="content" id="mainapp" style="display:none;">
+
+    <!-- HOME -->
+    <div class="screen active" id="home">
+      <div class="brandrow">
+        <div class="brandmark"><div class="ring"><svg viewBox="0 0 24 24" fill="none"><path d="M2.5 14.5C6 15.3 9 14.6 11.5 12C14.3 9.1 16.8 6.3 21.5 4.3C18 7 15.2 10 12.8 13.2C11 15.6 8 17 4.8 16.6C3.5 16.4 2.7 15.7 2.5 14.5Z" fill="var(--gold)"/></svg></div></div>
+        <span class="wordmark">DONE</span>
+      </div>
+
+      <div class="hero">
+        <h1>Hi <span id="home-greet-name">there</span>,<br>whatever you need, <span class="accent">done.</span></h1>
+        <p>Book vetted professionals for home, beauty, travel and more — in minutes.</p>
+      </div>
+
+      <div class="promptbox" onclick="showTab('concierge')"><i class="ti ti-sparkles"></i> What do you need today?</div>
+
+      <div class="featurerow">
+        <div class="feature"><i class="ti ti-shield-check"></i>Vetted pros</div>
+        <div class="feature"><i class="ti ti-bolt"></i>Book in minutes</div>
+        <div class="feature"><i class="ti ti-thumb-up"></i>Satisfaction guaranteed</div>
+      </div>
+
+      <div class="btnrow">
+        <div class="btn primary" onclick="showTab('services')">Browse services</div>
+        <div class="btn outline" onclick="showTab('concierge')">Ask AI concierge</div>
+      </div>
+
+      <div class="section-label">What we offer</div>
+      <div class="catgrid" id="home-catgrid"></div>
+
+      <div class="section-label" style="display:flex;justify-content:space-between;align-items:center;">
+        <span>Popular right now<br><span style="text-transform:none;font-size:11px;color:var(--text-muted);">Most booked this week</span></span>
+        <span style="color:var(--gold);font-weight:600;cursor:pointer;" onclick="showTab('services')">See all</span>
+      </div>
+      <div class="prohscroll" id="home-popular"></div>
+
+      <div class="plusbanner" onclick="showTab('plus')">
+        <span class="badge">DONE VIP</span>
+        <h3>Priority, plus bespoke experiences.</h3>
+        <p>Dedicated concierge, same-day guarantees, and curated luxury on request.</p>
+      </div>
+
+      <div class="section-label">Customers say</div>
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p>"Booked an electrician at 8pm, someone was at my door by 9. Didn't have to call anyone myself."</p>
+        <div class="who">— Yasmin, Amman</div>
+      </div>
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p>"The AI concierge found me a physician on a Friday night in under 5 minutes. Genuinely impressive."</p>
+        <div class="who">— Nabil, Amman</div>
+      </div>
+
+      <div class="section-label">How Done works</div>
+      <div class="benefititem"><i class="ti ti-message-2"></i><div><h3>1. Tell us what you need</h3><p>Type or speak your request, or browse categories directly.</p></div></div>
+      <div class="benefititem"><i class="ti ti-target-arrow"></i><div><h3>2. Get matched instantly</h3><p>We match you with a vetted professional and confirm pricing upfront.</p></div></div>
+      <div class="benefititem" style="border-bottom:none;"><i class="ti ti-armchair"></i><div><h3>3. Relax while it's handled</h3><p>Track your booking in real time and pay securely once it's done.</p></div></div>
+
+      <div style="margin-top:28px;padding-top:18px;border-top:0.5px solid var(--border);font-size:11px;color:var(--text-muted);line-height:2;">
+        <div style="text-align:center;">© 2026 Done. Consider it done.</div>
+      </div>
+    </div>
+
+    <!-- SERVICES -->
+    <div class="screen" id="services">
+      <div class="brandrow"><span class="wordmark" style="font-size:16px;">DONE</span></div>
+      <h2 style="font-size:19px;margin-bottom:14px;">Services</h2>
+      <div class="searchbar"><i class="ti ti-search"></i><input id="service-search" placeholder="Search services" oninput="renderServiceResults()"></div>
+
+      <div class="filtertabs" id="filtertabs"></div>
+      <div id="service-results"></div>
+    </div>
+
+    <!-- CONCIERGE -->
+    <div class="screen" id="concierge">
+      <div class="brandrow"><span class="wordmark" style="font-size:16px;">DONE</span></div>
+      <h2 style="font-size:19px;margin-bottom:14px;">AI concierge</h2>
+      <div id="chat-log">
+        <div class="bubble ai">Hi <span id="concierge-greet-name">there</span>. What do you need help with today?</div>
+      </div>
+      <div class="chatinput">
+        <input id="chat-input" placeholder="Type your request" onkeydown="if(event.key==='Enter') sendConciergeMessage();">
+        <button onclick="sendConciergeMessage()"><i class="ti ti-send"></i></button>
+      </div>
+    </div>
+
+    <!-- BOOKINGS -->
+    <div class="screen" id="bookings">
+      <div class="brandrow"><span class="wordmark" style="font-size:16px;">DONE</span></div>
+      <h2 style="font-size:19px;margin-bottom:14px;">Bookings</h2>
+      <div id="bookings-list"><div class="spinner"></div></div>
+    </div>
+
+    <!-- PLUS -->
+    <div class="screen" id="plus">
+      <div class="brandrow"><span class="wordmark" style="font-size:16px;">DONE</span></div>
+      <div class="plushero">
+        <span class="badge">DONE VIP</span>
+        <h2>Priority. Bespoke. On demand.</h2>
+        <p>Membership for people who need more, faster.</p>
+      </div>
+      <div class="benefititem"><i class="ti ti-clock"></i><div><h3>Same-day guarantee</h3><p>Priority matching for every booking.</p></div></div>
+      <div class="benefititem"><i class="ti ti-headset"></i><div><h3>Dedicated concierge</h3><p>A single point of contact for anything you need.</p></div></div>
+      <div class="benefititem"><i class="ti ti-plane"></i><div><h3>Travel and lifestyle</h3><p>Restaurant bookings, gifting, and trip planning.</p></div></div>
+      <div class="benefititem"><i class="ti ti-users"></i><div><h3>Family accounts</h3><p>Share priority access across your household.</p></div></div>
+
+      <div class="section-label">Bespoke experiences</div>
+      <div class="prohscroll" id="plus-scroll"></div>
+
+      <div class="section-label">Exclusive access</div>
+      <div id="plus-cards"></div>
+
+      <div class="btn primary" style="margin-top:20px;" onclick="showToast('Done VIP sign-up is coming soon.')">Upgrade to Done VIP — 15 JOD/mo</div>
+    </div>
+
+    <!-- FEEDBACK -->
+    <div class="screen" id="feedback">
+      <div class="brandrow"><span class="wordmark" style="font-size:16px;">DONE</span></div>
+      <h2 style="font-size:19px;margin-bottom:6px;">Feedback &amp; suggestions</h2>
+      <p style="font-size:12.5px;margin-bottom:16px;">Tell us what's working and what we could do better.</p>
+
+      <div class="section-label" style="margin-top:0;">Rate your experience</div>
+      <div id="star-row" style="display:flex;gap:8px;font-size:26px;color:var(--gold);margin-bottom:18px;cursor:pointer;"></div>
+
+      <div class="section-label" style="margin-top:0;">Your suggestion</div>
+      <textarea id="feedback-text" placeholder="What would make Done better for you?" style="width:100%;min-height:110px;background:var(--white);border:0.5px solid var(--border);border-radius:12px;padding:12px 14px;font-family:'Inter',sans-serif;font-size:13px;color:var(--ink);resize:none;"></textarea>
+
+      <div class="btn primary" style="margin-top:16px;" onclick="submitFeedback()">Submit feedback</div>
+    </div>
+
+    <!-- PROFILE -->
+    <div class="screen" id="profile">
+      <div class="brandrow"><span class="wordmark" style="font-size:16px;">DONE</span></div>
+      <div class="profilecard">
+        <div class="avatarcircle" id="profile-avatar">?</div>
+        <div>
+          <h3 style="font-family:'Inter',sans-serif;font-size:15px;font-weight:600;color:var(--ink);" id="profile-name">—</h3>
+          <p style="font-size:11.5px;" id="profile-email">—</p>
+        </div>
+        <div class="editbtn" onclick="toggleProfileEdit()">Edit</div>
+      </div>
+
+      <div id="profile-edit" style="display:none;margin-bottom:18px;">
+        <div class="field"><label>Full name</label><input id="edit-name"></div>
+        <div class="field"><label>Phone</label><input id="edit-phone"></div>
+        <div class="btn primary" onclick="saveProfile()">Save changes</div>
+      </div>
+
+      <div class="section-label">Preferences</div>
+      <div class="prefrow"><div><div class="label">Appearance</div><div class="sub">Toggle between light and dark mode</div></div><i class="ti ti-moon toggle"></i></div>
+      <div class="prefrow"><div><div class="label">Language</div><div class="sub">English</div></div><i class="ti ti-chevron-right toggle"></i></div>
+      <div class="prefrow" onclick="showTab('payment')" style="cursor:pointer;"><div><div class="label">Payment methods</div><div class="sub">Visa •••• 4021</div></div><i class="ti ti-chevron-right toggle"></i></div>
+
+      <div class="section-label">Account</div>
+      <div class="prefrow" onclick="showTab('plus')" style="cursor:pointer;"><div><div class="label">Done VIP</div><div class="sub">Not subscribed</div></div><i class="ti ti-chevron-right toggle"></i></div>
+      <div class="prefrow" onclick="showTab('feedback')" style="cursor:pointer;"><div><div class="label">Feedback &amp; suggestions</div><div class="sub">Share an idea or rate the app</div></div><i class="ti ti-chevron-right toggle"></i></div>
+      <div class="prefrow" onclick="logout()" style="cursor:pointer;"><div><div class="label" style="color:var(--danger);">Log out</div></div><i class="ti ti-logout toggle"></i></div>
+    </div>
+
+    <!-- PAYMENT -->
+    <div class="screen" id="payment">
+      <div class="brandrow"><span class="wordmark" style="font-size:16px;">DONE</span></div>
+      <h2 style="font-size:19px;margin-bottom:14px;">Payment methods</h2>
+      <p style="font-size:12px;margin-bottom:14px;">Demo mode: card charging isn't wired up yet — bookings are confirmed with pricing shown upfront, no payment is captured.</p>
+      <div class="prefrow">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <i class="ti ti-brand-visa" style="font-size:26px;color:var(--ink);"></i>
+          <div><div class="label">Visa •••• 4021</div><div class="sub">Expires 09/28 · Default</div></div>
+        </div>
+      </div>
+      <div class="promptbox" style="margin-top:18px;justify-content:center;cursor:pointer;" onclick="showToast('Adding real payment methods needs a payment processor integration.')">
+        <i class="ti ti-plus"></i> Add payment method
+      </div>
+    </div>
+
+  </div>
+
+  <!-- DETAIL OVERLAY -->
+  <div class="detail" id="detailview">
+    <div class="detail-header">
+      <div class="backbtn" onclick="closeDetail()"><i class="ti ti-chevron-left"></i></div>
+    </div>
+    <div class="detail-content">
+      <div class="detail-hero" id="detail-icon"><i class="ti ti-stethoscope"></i></div>
+      <h2 id="detail-title" style="font-size:19px;">—</h2>
+      <div class="ratingrow"><span class="stars" id="detail-stars">★★★★★</span><span id="detail-rating">—</span></div>
+      <div class="divider"></div>
+      <p id="detail-desc" style="font-size:13px;line-height:1.6;"></p>
+      <div class="divider"></div>
+      <div class="section-label" style="margin-top:0;">What's included</div>
+      <div class="benefititem"><i class="ti ti-check"></i><div><h3>Verified professional</h3><p>Licensed and background-checked.</p></div></div>
+      <div class="benefititem"><i class="ti ti-check"></i><div><h3>Fixed, upfront pricing</h3><p>No surprises when the job's done.</p></div></div>
+      <div class="benefititem"><i class="ti ti-check"></i><div><h3>Satisfaction guaranteed</h3><p>Not happy? Done makes it right.</p></div></div>
+    </div>
+    <div class="pricebar">
+      <div class="price" id="detail-price">—<span>starting at</span></div>
+      <div class="bookbtn" id="detail-bookbtn">Book now</div>
+    </div>
+  </div>
+
+  <!-- BOOKING FORM OVERLAY -->
+  <div class="bookform" id="bookform">
+    <div class="bookform-header">
+      <div class="backbtn" onclick="closeBookForm()"><i class="ti ti-chevron-left"></i></div>
+      <h2 style="font-size:17px;">Confirm booking</h2>
+    </div>
+    <div class="bookform-content">
+      <h3 id="bookform-service-title" style="font-size:15px;margin-bottom:14px;"></h3>
+      <div class="field"><label>Date</label><input id="bf-date" type="date"></div>
+      <div class="field"><label>Time</label><input id="bf-time" type="time"></div>
+      <div class="field"><label>Address</label><input id="bf-address" placeholder="Where should the pro come?"></div>
+      <div class="field"><label>Notes (optional)</label><textarea id="bf-notes" placeholder="Anything the pro should know?"></textarea></div>
+      <div class="formerror" id="bf-error"></div>
+      <div class="btn primary" onclick="submitBooking()">Confirm — <span id="bf-price"></span></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <!-- NAV -->
+  <div class="navbar" id="navbar" style="display:none;">
+    <button class="navitem active" onclick="showTab('home')" id="nav-home"><i class="ti ti-home"></i><span>Home</span></button>
+    <button class="navitem" onclick="showTab('services')" id="nav-services"><i class="ti ti-grid-dots"></i><span>Services</span></button>
+    <button class="navitem" onclick="showTab('concierge')" id="nav-concierge"><i class="ti ti-sparkles"></i><span>Concierge</span></button>
+    <button class="navitem" onclick="showTab('bookings')" id="nav-bookings"><i class="ti ti-calendar"></i><span>Bookings</span></button>
+    <button class="navitem" onclick="showTab('profile')" id="nav-profile"><i class="ti ti-user"></i><span>Profile</span></button>
+  </div>
+</div>
+
+<script src="/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Haifa Al-Khraisha",
+      "email": "haifa.alkhraisha@gmail.com",
+      "phone": "",
+      "passwordHash": "366d5672eefb0e7715e24cf1e28d294f:a384aa14b60c0cda9b3598480b423d78516a856cc794e5a23ba8e1cdc85d86897f5ed5a875dbf5ca1b176a88cd8b8adbac332cdb77a22a87593b8e02e373eff1",
+      "createdAt": "2026-08-02T09:53:40.697Z"
+    }
+  ],
+  "bookings": [],
+  "sessions": {
+    "e95dc4d1a29d6125bb893c5477c8180776857b885b810bfd": 1
+  },
+  "feedback": [],
+  "nextUserId": 2,
+  "nextBookingId": 1
+}
